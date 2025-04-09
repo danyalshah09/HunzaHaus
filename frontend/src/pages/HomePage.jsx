@@ -234,7 +234,7 @@ const HomePage = () => {
                 </p>
                 <Link 
                   to={`/products/${category.slug}`}
-                  className="text-primary hover:text-primary-dark mt-auto"
+                  className="text-blue-500 hover:text-blue-400 mt-auto"
                 >
                   Explore {category.name}
                 </Link>

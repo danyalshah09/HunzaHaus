@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white text-gray-800 border-t border-gray-200">
       <div className="container mx-auto px-4">
-        <div className="flex justify-center overflow-x-auto py-2 space-x-6 text-sm md:text-base lg:text-lg whitespace-nowrap">
+        <div className="flex flex-wrap justify-center gap-4 py-2 text-sm md:text-base lg:text-lg">
           {categories.map((category) => (
             <Link
               key={category.path}
