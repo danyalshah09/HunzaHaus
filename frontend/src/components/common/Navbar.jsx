@@ -10,17 +10,19 @@ const categories = [
 
 const Navbar = () => {
   return (
-    <nav className="bg-white py-3 border-b border-gray-200 shadow-sm">
-      <div className="container mx-auto px-4 flex justify-center space-x-6">
-        {categories.map((category) => (
-          <Link 
-            key={category.path} 
-            to={category.path} 
-            className="text-gray-800 hover:text-gray-600 transition-colors duration-300 font-medium"
-          >
-            {category.name}
-          </Link>
-        ))}
+    <nav className="bg-white text-gray-800 border-t border-gray-200">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-center overflow-x-auto py-2 space-x-6 text-sm md:text-base lg:text-lg whitespace-nowrap">
+          {categories.map((category) => (
+            <Link
+              key={category.path}
+              to={category.path}
+              className="text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
+            >
+              {category.name}
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   );

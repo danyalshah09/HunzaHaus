@@ -37,8 +37,10 @@ function App() {
       <AuthProvider>
         <CartProvider>
           <div className="flex flex-col min-h-screen w-full bg-white">
-            <div className="bg-white text-gray-800 shadow-sm">
+            <div className="sticky top-0 z-50 bg-white shadow-sm">
               <Header />
+            </div>
+            <div className="bg-white text-gray-800">
               <Navbar />
             </div>
     
