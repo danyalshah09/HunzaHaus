@@ -94,4 +94,23 @@ export const getUserOrders = async () => {
   }
 };
 
+// Category-related API calls
+export const getAllCategories = async () => {
+  try {
+    const response = await api.get('/categories');
+    return response.data;
+  } catch (error) {
+    throw error.response ? error.response.data : new Error('Failed to fetch categories');
+  }
+};
+
+export const getCategoryBySlug = async (slug) => {
+  try {
+    const response = await api.get(`/categories/${slug}`);
+    return response.data;
+  } catch (error) {
+    throw error.response ? error.response.data : new Error('Failed to fetch category');
+  }
+};
+
 export default api;

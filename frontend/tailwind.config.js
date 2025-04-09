@@ -19,10 +19,14 @@ export default {
     theme: {
       extend: {
         colors: {
-          'primary': '#3b82f6', // Blue color
-          'primary-dark': '#2563eb',
-          'secondary': '#10b981', // Green color
-          'secondary-dark': '#059669'
+          'primary': '#ffffff', // White color
+          'primary-dark': '#f8f9fa', // Slightly off-white
+          'secondary': '#e9ecef', // Light gray
+          'secondary-dark': '#dee2e6' // Slightly darker gray
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          display: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         }
       },
     },

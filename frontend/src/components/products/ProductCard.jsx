@@ -11,8 +11,8 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden transition-transform hover:scale-105">
-      <div className="w-full h-48 bg-gray-100 flex items-center justify-center">
+    <div className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full">
+      <div className="w-full h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
         {imageError ? (
           <div className="text-gray-400 text-center">
             <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -24,28 +24,28 @@ const ProductCard = ({ product }) => {
           <img 
             src={product.imageUrl} 
             alt={product.name} 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
             onError={handleImageError}
           />
         )}
       </div>
-      <div className="p-4">
+      <div className="p-3 flex flex-col flex-grow">
         <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-        <p className="text-gray-600 mb-2">{product.description}</p>
-        <div className="flex justify-between items-center">
-          <span className="text-xl font-bold text-primary">
+        <p className="text-gray-600 mb-4 flex-grow">{product.description}</p>
+        <div className="mt-auto">
+          <div className="text-xl font-bold text-black mb-3">
             ${product.price.toFixed(2)}
-          </span>
-          <div className="flex space-x-2">
+          </div>
+          <div className="flex gap-2">
             <Link 
               to={`/product/${product._id}`} 
-              className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+              className="flex-1 px-3 py-2 bg-gray-200 rounded hover:bg-gray-300 text-center"
             >
               Details
             </Link>
             <button 
               onClick={() => addToCart(product)} 
-              className="px-3 py-1 bg-primary text-white rounded hover:bg-primary-dark"
+              className="flex-1 px-3 py-2 bg-blue-300 text-black rounded hover:bg-blue-500 text-center"
             >
               Add to Cart
             </button>

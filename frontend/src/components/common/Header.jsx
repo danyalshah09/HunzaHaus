@@ -16,24 +16,24 @@ const Header = () => {
   const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <header className="bg-primary text-white">
+    <header className="bg-white text-gray-800">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-white">
+        <Link to="/" className="text-2xl font-bold text-gray-800">
         HunzaHaus
         </Link>
         
         {mockMode && (
-          <div className="text-xs bg-yellow-500 text-white px-2 py-1 rounded mx-2">
+          <div className="text-xs bg-yellow-500 text-gray-800 px-2 py-1 rounded mx-2">
             Demo Mode
           </div>
         )}
         
         <nav className="flex items-center space-x-4">
-          <Link to="/products" className="text-white hover:text-gray-200">
+          <Link to="/products" className="text-gray-800 hover:text-gray-600">
             Products
           </Link>
           
-          <Link to="/cart" className="text-white hover:text-gray-200 relative">
+          <Link to="/cart" className="text-gray-800 hover:text-gray-600 relative">
             <span>Cart</span>
             {cartItemCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
@@ -46,7 +46,7 @@ const Header = () => {
             <div className="relative">
               <button 
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="flex items-center space-x-1 text-white hover:text-gray-200"
+                className="flex items-center space-x-1 text-gray-800 hover:text-gray-600"
               >
                 <span>{user.name || 'User'}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -76,13 +76,13 @@ const Header = () => {
             <div className="flex space-x-2">
             <Link 
               to="/login" 
-                className="bg-white text-primary px-3 py-1 rounded hover:bg-gray-100"
+                className="bg-white text-gray-800 px-3 py-1 rounded hover:bg-gray-50 border border-gray-200 shadow-sm"
             >
               Login
             </Link>
               <Link 
                 to="/register" 
-                className="bg-primary-dark text-white px-3 py-1 rounded border border-white/20 hover:bg-primary-darker"
+                className="bg-gray-800 text-white px-3 py-1 rounded hover:bg-gray-700 shadow-sm"
               >
                 Register
               </Link>

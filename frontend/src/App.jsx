@@ -36,8 +36,8 @@ function App() {
     <Router>
       <AuthProvider>
         <CartProvider>
-          <div className="flex flex-col min-h-screen w-full" style={{backgroundColor: "#f3f4f6"}}>
-            <div className="bg-primary text-white shadow-md">
+          <div className="flex flex-col min-h-screen w-full bg-white">
+            <div className="bg-white text-gray-800 shadow-sm">
               <Header />
               <Navbar />
             </div>

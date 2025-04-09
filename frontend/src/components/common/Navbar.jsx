@@ -10,13 +10,13 @@ const categories = [
 
 const Navbar = () => {
   return (
-    <nav className="bg-primary-dark py-3 border-t border-white/20">
+    <nav className="bg-white py-3 border-b border-gray-200 shadow-sm">
       <div className="container mx-auto px-4 flex justify-center space-x-6">
         {categories.map((category) => (
           <Link 
             key={category.path} 
             to={category.path} 
-            className="text-white hover:text-gray-200 transition-colors duration-300"
+            className="text-gray-800 hover:text-gray-600 transition-colors duration-300 font-medium"
           >
             {category.name}
           </Link>
