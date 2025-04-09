@@ -19,9 +19,11 @@ import ProductDetail from './components/products/ProductDetail';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderConfirmationPage from './pages/OrderConfirmationPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
 import AccountPage from './pages/AccountPage';
+
+// Auth Components
+import LoginForm from './components/auth/LoginForm';
+import SignupForm from './components/auth/SignupForm';
 
 function App() {
   // Protected Route Component moved inside App function
@@ -38,14 +40,14 @@ function App() {
             <div className="bg-primary text-white shadow-md">
               <Header />
               <Navbar />
-      </div>
+            </div>
     
             <main className="flex-grow container mx-auto px-4 py-6" style={{maxWidth: "80rem"}}>
               <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/register" element={<SignupForm />} />
                 
                 {/* Product Routes */}
                 <Route path="/products" element={<ProductsPage />} />

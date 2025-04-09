@@ -1,11 +1,12 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { loginUser, registerUser, getCurrentUser } from '../utils/api';
+import { loginUser, registerUser, getCurrentUser } from '../services/auth.service';
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     // Check for existing token and load user
@@ -17,7 +18,9 @@ export const AuthProvider = ({ children }) => {
           setUser(userData);
         }
       } catch (error) {
-        // Token might be expired or invalid
+        console.error('Auth check error:', error);
+        setError(error.message);
+        // If token is invalid, remove it
         localStorage.removeItem('token');
       } finally {
         setLoading(false);
@@ -29,28 +32,39 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
+      setLoading(true);
+      setError(null);
       const { user, token } = await loginUser(email, password);
       setUser(user);
       localStorage.setItem('token', token);
       return user;
     } catch (error) {
+      setError(error.message);
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
   const register = async (userData) => {
     try {
+      setLoading(true);
+      setError(null);
       const { user, token } = await registerUser(userData);
       setUser(user);
       localStorage.setItem('token', token);
       return user;
     } catch (error) {
+      setError(error.message);
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
   const logout = () => {
     setUser(null);
+    setError(null);
     localStorage.removeItem('token');
   };
 
@@ -61,7 +75,8 @@ export const AuthProvider = ({ children }) => {
       register, 
       logout, 
       loading,
-      isAuthenticated: !!user 
+      error,
+      isAuthenticated: !!user
     }}>
       {!loading && children}
     </AuthContext.Provider>

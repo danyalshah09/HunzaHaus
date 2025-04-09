@@ -49,9 +49,17 @@ export const getCurrentUser = async () => {
 };
 
 // Product-related API calls
-export const getAllProducts = async () => {
+export const getAllProducts = async (queryParams = {}) => {
   try {
-    const response = await api.get('/products');
+    // Convert query parameters to URL search params
+    const searchParams = new URLSearchParams();
+    Object.entries(queryParams).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        searchParams.append(key, value);
+      }
+    });
+    
+    const response = await api.get(`/products?${searchParams.toString()}`);
     return response.data;
   } catch (error) {
     throw error.response ? error.response.data : new Error('Failed to fetch products');
