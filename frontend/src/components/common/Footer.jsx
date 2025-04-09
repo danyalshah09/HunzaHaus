@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center mt-6 border-t border-gray-200 pt-4">
-        © 2024 Dry Fruits Store. All Rights Reserved.
+        © 2024 HunzaHaus Store. All Rights Reserved.
       </div>
     </footer>
   );
