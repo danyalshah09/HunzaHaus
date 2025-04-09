@@ -51,6 +51,7 @@ export const getCurrentUser = async () => {
 // Product-related API calls
 export const getAllProducts = async (queryParams = {}) => {
   try {
+    console.log('Fetching products from:', `${BASE_URL}/products`);
     // Convert query parameters to URL search params
     const searchParams = new URLSearchParams();
     Object.entries(queryParams).forEach(([key, value]) => {
@@ -60,8 +61,15 @@ export const getAllProducts = async (queryParams = {}) => {
     });
     
     const response = await api.get(`/products?${searchParams.toString()}`);
+    console.log('Products response:', response.data);
     return response.data;
   } catch (error) {
+    console.error('Error fetching products:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      url: error.config?.url
+    });
     throw error.response ? error.response.data : new Error('Failed to fetch products');
   }
 };
@@ -97,9 +105,17 @@ export const getUserOrders = async () => {
 // Category-related API calls
 export const getAllCategories = async () => {
   try {
+    console.log('Fetching categories from:', `${BASE_URL}/categories`);
     const response = await api.get('/categories');
+    console.log('Categories response:', response.data);
     return response.data;
   } catch (error) {
+    console.error('Error fetching categories:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      url: error.config?.url
+    });
     throw error.response ? error.response.data : new Error('Failed to fetch categories');
   }
 };

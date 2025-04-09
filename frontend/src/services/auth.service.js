@@ -79,7 +79,10 @@ export const loginUser = async (email, password) => {
 
 export const registerUser = async (userData) => {
   try {
+    console.log('Registering user with data:', userData);
+    console.log('API URL:', API_URL);
     const response = await api.post('/auth/register', userData);
+    console.log('Registration response:', response.data);
     const { user, token, refreshToken } = response.data;
     
     // Store tokens
@@ -88,6 +91,7 @@ export const registerUser = async (userData) => {
     
     return { user, token, refreshToken };
   } catch (error) {
+    console.error('Registration error details:', error.response?.data || error);
     throw new Error(error.response?.data?.message || 'Registration failed');
   }
 };

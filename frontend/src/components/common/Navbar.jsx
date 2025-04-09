@@ -5,7 +5,7 @@ const categories = [
   { name: 'Embroidery', path: '/products/embroidery' },
   { name: 'Apple Jams', path: '/products/apple-jams' },
   { name: 'Silajeet', path: '/products/silajeet' },
-  { name: 'Hunzai Dresses', path: '/products/hunzai-dresses' }
+  { name: 'Dry fruits', path: '/products/dry-fruits' }
 ];
 
 const Navbar = () => {

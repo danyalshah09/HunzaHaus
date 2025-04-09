@@ -38,7 +38,8 @@ const ProductCard = ({ product }) => {
           </div>
           <div className="flex gap-2">
             <Link 
-              to={`/product/${product._id}`} 
+              to={`/product/${product._id}`}
+              state={{ product }}
               className="flex-1 px-3 py-2 bg-gray-200 rounded hover:bg-gray-300 text-center"
             >
               Details

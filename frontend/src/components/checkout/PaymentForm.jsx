@@ -81,7 +81,7 @@ const PaymentForm = ({ onPaymentSubmit, shippingAddress, total }) => {
         </div>
         <button 
           type="submit" 
-          className="w-full bg-primary text-white py-3 rounded hover:bg-primary-dark"
+          className="w-full bg-black text-white py-3 rounded hover:bg-gray-500 hover:text-white"
         >
           Complete Payment
         </button>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { getProductById } from '../../utils/api';
 import { useCart } from '../../context/CartContext';
 
@@ -49,14 +49,17 @@ const sampleProducts = {
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const [product, setProduct] = useState(location.state?.product);
+  const [loading, setLoading] = useState(!location.state?.product);
   const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
 
   useEffect(() => {
     const loadProductDetail = async () => {
+      if (location.state?.product) return; // Skip if product is passed in state
+      
       try {
         setLoading(true);
         const data = await getProductById(id);
@@ -78,7 +81,7 @@ const ProductDetail = () => {
     };
 
     loadProductDetail();
-  }, [id]);
+  }, [id, location.state]);
 
   if (loading) return <div className="text-center py-8">Loading product details...</div>;
 
@@ -106,15 +109,15 @@ const ProductDetail = () => {
       )}
       
       <div className="bg-white rounded-lg shadow-md p-6 grid md:grid-cols-2 gap-8">
-      <div>
-        <img 
-          src={product.imageUrl} 
-          alt={product.name} 
+        <div>
+          <img 
+            src={product.imageUrl} 
+            alt={product.name} 
             className="w-full rounded-lg shadow-md object-cover h-80"
-        />
-      </div>
-      <div>
-        <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
+          />
+        </div>
+        <div>
+          <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
           <div className="flex items-center mb-4">
             <div className="flex text-yellow-400 mr-2">
               {[...Array(5)].map((_, i) => (
@@ -124,16 +127,16 @@ const ProductDetail = () => {
             <span className="text-gray-600">({product.rating})</span>
           </div>
           <p className="text-gray-600 mb-6">{product.description}</p>
-        <div className="flex items-center mb-4">
-          <span className="text-2xl font-bold text-primary mr-4">
-            ${product.price.toFixed(2)}
-          </span>
+          <div className="flex items-center mb-4">
+            <span className="text-2xl font-bold text-primary mr-4">
+              ${product.price.toFixed(2)}
+            </span>
             <span className="text-green-600 bg-green-100 px-2 py-1 rounded">
-            {product.inStock ? 'In Stock' : 'Out of Stock'}
-          </span>
-        </div>
+              {product.inStock ? 'In Stock' : 'Out of Stock'}
+            </span>
+          </div>
           <div className="flex items-center mb-6">
-          <label className="mr-4">Quantity:</label>
+            <label className="mr-4">Quantity:</label>
             <div className="flex border rounded">
               <button 
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -141,10 +144,10 @@ const ProductDetail = () => {
               >
                 -
               </button>
-          <input 
-            type="number" 
-            min="1" 
-            value={quantity} 
+              <input 
+                type="number" 
+                min="1" 
+                value={quantity} 
                 onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
                 className="w-16 text-center py-1"
               />
@@ -155,15 +158,15 @@ const ProductDetail = () => {
                 +
               </button>
             </div>
-        </div>
+          </div>
           <div className="flex space-x-4">
-        <button 
-          onClick={handleAddToCart}
-          disabled={!product.inStock}
-              className="bg-primary text-white px-6 py-2 rounded hover:bg-primary-dark disabled:opacity-50 flex-grow"
-        >
-          Add to Cart
-        </button>
+            <button 
+              onClick={handleAddToCart}
+              disabled={!product.inStock}
+              className="bg-black text-primary px-6 py-2 rounded hover:bg-gray-600 hover:text-primary disabled:opacity-50 flex-grow"
+            >
+              Add to Cart
+            </button>
             <Link 
               to="/cart" 
               className="border border-primary text-primary px-6 py-2 rounded hover:bg-gray-50"

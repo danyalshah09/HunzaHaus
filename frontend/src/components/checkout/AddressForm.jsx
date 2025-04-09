@@ -63,7 +63,7 @@ const AddressForm = ({ onAddressSubmit }) => {
       </div>
       <button 
         type="submit" 
-        className="w-full bg-primary text-white py-3 rounded hover:bg-primary-dark"
+        className="w-full bg-black text-white py-3 rounded hover:bg-gray-500"
       >
         Continue to Payment
       </button>

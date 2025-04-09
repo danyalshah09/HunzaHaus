@@ -26,7 +26,7 @@ const CartSummary = () => {
         to="/checkout" 
         className={`w-full block text-center py-3 rounded ${
           cart.length > 0 
-            ? 'bg-primary text-white hover:bg-primary-dark' 
+            ? 'bg-black text-white hover:bg-gray-500' 
             : 'bg-gray-300 text-gray-500 cursor-not-allowed'
         }`}
         disabled={cart.length === 0}

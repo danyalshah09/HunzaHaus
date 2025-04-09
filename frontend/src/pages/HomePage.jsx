@@ -13,6 +13,7 @@ import apricotOil from '/apricotOil.jpeg';
 import hunzaBackground from '/hunzaBackground.jpg';
 import hunza2 from '/hunza2.jpg';
 import embroideryBackground from '/embroideryBackground.jpg';
+
 // Sample product data to use when API fails
 const sampleProducts = [
   {
@@ -42,12 +43,13 @@ const sampleProducts = [
     price: 25.99,
     category: 'embroidery',
     imageUrl: scarf,
-       rating: 4.9
+    inStock: true,
+    rating: 4.9
   },
   {
     _id: '4',
     name: 'Apricot Oil',
-    description: 'Delicious apple jam made from freshly picked apples.',
+    description: 'Pure apricot oil extracted from Hunza apricots.',
     price: 8.99,
     category: 'apricot-oil',
     imageUrl: apricotOil,
@@ -66,12 +68,12 @@ const slides = [
     title: "Premium Quality Products",
     description: "Handpicked and carefully selected for your satisfaction",
     image: hunza2
-   },
+  },
   {
     title: "Direct from Hunza Valley",
     description: "Experience the authentic taste and quality of Hunza",
     image: embroideryBackground
-   }
+  }
 ];
 
 const HomePage = () => {
@@ -232,7 +234,7 @@ const HomePage = () => {
                 </p>
                 <Link 
                   to={`/products/${category.slug}`}
-                  className="text-blue-600 hover:text-blue-400 mt-auto"
+                  className="text-primary hover:text-primary-dark mt-auto"
                 >
                   Explore {category.name}
                 </Link>

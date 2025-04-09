@@ -93,12 +93,12 @@ const CheckoutPage = () => {
 
       {/* Checkout steps indicator */}
       <div className="flex mb-8">
-        <div className={`flex-1 text-center pb-4 ${step === 1 ? 'border-b-2 border-primary' : 'border-b'}`}>
-          <span className={`inline-block w-8 h-8 rounded-full mb-2 ${step === 1 ? 'bg-primary text-white' : 'bg-gray-200'}`}>1</span>
+        <div className={`flex-1 text-center pb-4 ${step === 1 ? 'border-b-2 border-black font-bold' : 'border-b'}`}>
+          <span className={`inline-block w-8 h-8 rounded-full mb-2 ${step === 1 ? 'bg-black text-white' : 'bg-gray-200'}`}>1</span>
           <div>Shipping</div>
         </div>
         <div className={`flex-1 text-center pb-4 ${step === 2 ? 'border-b-2 border-primary' : 'border-b'}`}>
-          <span className={`inline-block w-8 h-8 rounded-full mb-2 ${step === 2 ? 'bg-primary text-white' : 'bg-gray-200'}`}>2</span>
+          <span className={`inline-block w-8 h-8 rounded-full mb-2 ${step === 2 ? 'bg-black text-white' : 'bg-gray-200'}`}>2</span>
           <div>Payment</div>
         </div>
       </div>

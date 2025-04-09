@@ -2,8 +2,20 @@ import React from 'react';
 import ProductCard from './ProductCard';
 
 const ProductList = ({ products }) => {
-  if (!products || products.length === 0) {
-    return <div>No products found.</div>;
+  if (!products) {
+    return (
+      <div className="text-center py-8">
+        <div className="text-gray-500">Loading products...</div>
+      </div>
+    );
+  }
+
+  if (products.length === 0) {
+    return (
+      <div className="text-center py-8">
+        <div className="text-gray-500">No products found in this category.</div>
+      </div>
+    );
   }
 
   return (
